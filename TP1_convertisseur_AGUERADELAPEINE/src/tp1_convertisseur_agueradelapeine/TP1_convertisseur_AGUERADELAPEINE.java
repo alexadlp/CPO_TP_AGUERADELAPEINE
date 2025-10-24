@@ -17,21 +17,6 @@ public class TP1_convertisseur_AGUERADELAPEINE {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        /*Scanner sc;
-        sc = new Scanner(System.in);
-        System.out.println("saisir une valeur");
-        Double reel = sc.nextDouble();
-
-        Double Kres;
-        System.out.println("Voici la temp");
-        Kres = reel + 273.15;
-        System.out.println("temps" + Kres);
-*/
-
-    }
-
     public static double CelciusVersKelvin(double tCelcius) {
         double tKelvin = tCelcius + 273.15;
         return tKelvin;
@@ -59,12 +44,23 @@ public class TP1_convertisseur_AGUERADELAPEINE {
         return tKelvin;
     }
 
-    public static void Choisirtemp(double tFinal) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+        // TODO code application logic here
+        /*Scanner sc;
+        sc = new Scanner(System.in);
+        System.out.println("saisir une valeur");
+        Double reel = sc.nextDouble();
+
+        Double Kres;
+        System.out.println("Voici la temp");
+        Kres = reel + 273.15;
+        System.out.println("temps" + Kres);
+         */
 
         System.out.println("Bonjour, saisissez une valeur :");
+        Scanner sc;
+        sc = new Scanner(System.in);
         double valeur = sc.nextDouble();
-
         System.out.println("Saisissez la conversion que vous souhaitez effectuer :");
         System.out.println("1) De Celsius vers Kelvin");
         System.out.println("2) De Kelvin vers Celsius");
@@ -109,10 +105,9 @@ public class TP1_convertisseur_AGUERADELAPEINE {
                 System.out.println(valeur + " degrés Fahrenheit est égal à " + resultat + " degrés Kelvin");
             }
 
-            default -> System.out.println("Erreur : choix invalide !");
+            default ->
+                System.out.println("Erreur : choix invalide !");
         }
-
-        sc.close();
     }
-
 }
+
