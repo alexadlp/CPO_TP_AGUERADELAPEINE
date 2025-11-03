@@ -14,7 +14,16 @@ public class BouteilleBiere {
     float degreAlcool;
     String brasserie;
     boolean ouverte;
-public boolean decapsulé(){}
+public boolean decapsuleur(){
+        if(!ouverte){
+            ouverte=true;
+            System.out.println("Bravo l'alcoolo tu as ouvert la" + nom);
+        }else{
+            System.out.println("Biere deja ouverte");
+        }
+        return false;
+        }
+    
     public BouteilleBiere(String unNom, float unDegre, String uneBrasserie) {
         nom = unNom;
         degreAlcool = unDegre;

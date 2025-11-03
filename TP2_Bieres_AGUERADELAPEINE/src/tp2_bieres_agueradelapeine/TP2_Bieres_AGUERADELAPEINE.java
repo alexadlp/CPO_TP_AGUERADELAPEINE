@@ -37,6 +37,9 @@ public class TP2_Bieres_AGUERADELAPEINE {
         BouteilleBiere bierebizarre = new BouteilleBiere("Cuvée du fou", (float) 14.4, "De chez maxence Fleurisson");
         BouteilleBiere antimehdi = new BouteilleBiere("Cuvée Rn", (float) 28.8, "Retour à la case départ");
         antimehdi.lireEtiquette();
+        antimehdi.decapsuleur();
+        antimehdi.decapsuleur();
+        autreBiere.decapsuleur();
         bierebizarre.lireEtiquette();
         autreBiere.lireEtiquette();
     }
