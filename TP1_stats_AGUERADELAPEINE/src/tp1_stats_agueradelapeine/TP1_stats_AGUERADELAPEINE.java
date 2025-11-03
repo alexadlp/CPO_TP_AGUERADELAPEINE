@@ -28,10 +28,11 @@ public class TP1_stats_AGUERADELAPEINE {
             int tirage = generateurAleat.nextInt(6);
             de[tirage]++;
         }
-        double pourcentage;
+        
 
         System.out.println("\nRésultat des lancers :");
         for (int i = 0; i < de.length; i++) {
+            double pourcentage;
             pourcentage = (de[i]*100)/m;
             System.out.println("Face " + (i + 1) + " : "+ pourcentage +" %");
         }
