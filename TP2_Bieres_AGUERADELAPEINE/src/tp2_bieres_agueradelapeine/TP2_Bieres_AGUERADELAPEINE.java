@@ -36,13 +36,14 @@ public class TP2_Bieres_AGUERADELAPEINE {
                 "Abbaye de Leffe");
         BouteilleBiere bierebizarre = new BouteilleBiere("Cuvée du fou", (float) 14.4, "De chez maxence Fleurisson");
         BouteilleBiere antimehdi = new BouteilleBiere("Cuvée Rn", (float) 28.8, "Retour à la case départ");
-        /*antimehdi.lireEtiquette();
+        antimehdi.lireEtiquette();
         antimehdi.decapsuleur();
         antimehdi.decapsuleur();
         autreBiere.decapsuleur();
         bierebizarre.lireEtiquette();
         autreBiere.lireEtiquette();
-        */System.out.println(uneBiere) ; 
+        System.out.println(antimehdi) ; 
+        System.out.println(autreBiere) ; 
     }
 
 }
