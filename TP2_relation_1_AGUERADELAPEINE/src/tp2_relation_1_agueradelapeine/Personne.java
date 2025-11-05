@@ -33,23 +33,23 @@ public class Personne {
             return false;
         }
 
-        // La voiture a déjà un proprietaire ?
+        
         if (voiture_a_ajouter.proprietaire != null) {
             System.out.println("Erreur : la voiture " + voiture_a_ajouter.modele
                     + " appartient déjà à " + voiture_a_ajouter.proprietaire.nom + ".");
             return false;
         }
 
-        // La personne a déjà 3 voitures ?
+       
         if (nbVoitures >= liste_voitures.length) {
             System.out.println("Erreur : " + nom + " a déjà " + nbVoitures + " voitures.");
             return false;
         }
 
-        // Ajout possible : placer dans la case nbVoitures, incrémenter, et lier la voiture
+        
         liste_voitures[nbVoitures] = voiture_a_ajouter;
         nbVoitures++;
-        voiture_a_ajouter.proprietaire = this; // this = l'objet Personne courant
+        voiture_a_ajouter.proprietaire = this; 
         return true;
     }
 }
