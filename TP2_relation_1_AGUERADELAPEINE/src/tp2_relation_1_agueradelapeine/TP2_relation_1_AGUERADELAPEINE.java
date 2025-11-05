@@ -22,8 +22,8 @@ public class TP2_relation_1_AGUERADELAPEINE {
         Voiture uneMicra = new Voiture("Micra", "Nissan", 4);
 
       
-        Personne bob = new Personne("Bobby", "Sixkiller");
-        Personne reno = new Personne("Reno", "Raines");
+        Personne bob = new Personne("Mehdi", "ami");
+        Personne reno = new Personne("Maxence", "Fleurisson coquibus");
 
         
         System.out.println("Liste des voitures disponibles :");
