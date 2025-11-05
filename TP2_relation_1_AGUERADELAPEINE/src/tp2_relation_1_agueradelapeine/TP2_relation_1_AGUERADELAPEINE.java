@@ -38,17 +38,17 @@ public class TP2_relation_1_AGUERADELAPEINE {
         reno.ajouter_voiture(uneMicra);
 
     
-        System.out.println("\n--- Résumé des propriétaires ---");
+        System.out.println("\nRésumé des propriétaires");
         System.out.println(bob);
         System.out.println(reno);
 
         
-        System.out.println("\n--- Détails des voitures de Bob ---");
+        System.out.println("\n Détails des voitures de Bob ");
         for (int i = 0; i < bob.nbVoitures; i++) {
             System.out.println(bob.liste_voitures[i]);
         }
 
-        System.out.println("\n--- Détails des voitures de Reno ---");
+        System.out.println("\nDétails des voitures de Reno");
         for (int i = 0; i < reno.nbVoitures; i++) {
             System.out.println(reno.liste_voitures[i]);
         }
