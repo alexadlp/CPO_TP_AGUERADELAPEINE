@@ -21,7 +21,6 @@ public class TP3_Heroic_Fantasy_AGUERADELAPEINE {
     public static void main(String[] args) {
         Vector<Arme> mesArmes = new Vector<Arme>();
 
-        // TODO code application logic here
         Epee Epee1 = new Epee("Excalibur", 7, 5);
         Epee Epee2 = new Epee("Durandal", 4, 7);
         Baton baton1 = new Baton("Chêne", 4, 5);
