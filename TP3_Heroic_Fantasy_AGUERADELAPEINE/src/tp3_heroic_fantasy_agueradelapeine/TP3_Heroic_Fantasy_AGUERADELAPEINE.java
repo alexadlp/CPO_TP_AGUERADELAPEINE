@@ -7,6 +7,7 @@ package tp3_heroic_fantasy_agueradelapeine;
 import Armes.Baton;
 import Armes.Arme;
 import Armes.Epee;
+import java.util.ArrayList;
 import java.util.Vector;
 
 /**
@@ -19,7 +20,7 @@ public class TP3_Heroic_Fantasy_AGUERADELAPEINE {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Vector<Arme> mesArmes = new Vector<Arme>();
+        ArrayList<Arme> mesArmes = new ArrayList<Arme>();
 
         Epee Epee1 = new Epee("Excalibur", 7, 5);
         Epee Epee2 = new Epee("Durandal", 4, 7);
@@ -31,7 +32,7 @@ public class TP3_Heroic_Fantasy_AGUERADELAPEINE {
         mesArmes.add(baton2);
         System.out.println("Liste des armes :");
         for (int i = 0; i < mesArmes.size(); i++) {
-            System.out.println(mesArmes.elementAt(i));
+            System.out.println(mesArmes.get(i));
         }
     }
 }
