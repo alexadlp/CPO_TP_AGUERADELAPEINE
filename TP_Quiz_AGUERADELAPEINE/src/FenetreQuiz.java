@@ -260,9 +260,10 @@ public class FenetreQuiz extends javax.swing.JFrame {
     private void nxtquestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nxtquestActionPerformed
         // TODO add your handling code here:
         indexQuestionCourante++;
-        if (scorequest==5);
-        
-
+        if (scorequest==5){
+        Vic v=new Vic();
+        v.setVisible(true);
+        }
         if (indexQuestionCourante < listeQuestions.size()) {
 
             afficherQuestionCourante();
