@@ -24,17 +24,17 @@ public class FenetreQuiz extends javax.swing.JFrame {
      * Creates new form FenetreQuiz
      */
     private ArrayList<Question> listeQuestions = new ArrayList<>();
+    private int scorequest = 0;
 
     private int indexQuestionCourante = 0;
 
     public FenetreQuiz() {
         initComponents();
         initialiserQuestions();
-
-        // 4. Afficher la première question
         afficherQuestionCourante();
     }
-     private void initialiserQuestions() {
+
+    private void initialiserQuestions() {
         listeQuestions.add(new Question(
                 "Quelle est la première loi de la thermodynamique ?",
                 "L’énergie interne augmente spontanément",
@@ -80,40 +80,22 @@ public class FenetreQuiz extends javax.swing.JFrame {
                 4
         ));
     }
-     private void afficherQuestionCourante() {
+
+    private void afficherQuestionCourante() {
 
         Question q = listeQuestions.get(indexQuestionCourante);
 
-        // Mettre à jour le JLabel
-        quest.setText("<html>"+q.getIntitule()+"</html>");
+        quest.setText("<html>" + q.getIntitule() + "</html>");
 
-        
-        btrep1.setText("<html>"+q.getProposition1()+"</html>");
-        btrep2.setText("<html>" + q.getProposition2()+ "</html>");
-        btrep3.setText("<html>" +q.getProposition3()+ "</html>");
-        btrep4.setText("<html>" + q.getProposition4()+ "</html>");
+        btrep1.setText("<html>" + q.getProposition1() + "</html>");
+        btrep2.setText("<html>" + q.getProposition2() + "</html>");
+        btrep3.setText("<html>" + q.getProposition3() + "</html>");
+        btrep4.setText("<html>" + q.getProposition4() + "</html>");
 
-        
         btrep1.setEnabled(true);
         btrep2.setEnabled(true);
         btrep3.setEnabled(true);
         btrep4.setEnabled(true);
-    }
-     private void verifierReponse(int numeroChoisi) {
-
-        Question q = listeQuestions.get(indexQuestionCourante);
-
-        if (numeroChoisi == q.getIndexBonneReponse()) {
-            quest.setText("Bonne réponse !");
-        } else {
-            quest.setText("Mauvaise réponse !");
-        }
-
-        // Désactiver les boutons après la réponse
-        btrep1.setEnabled(false);
-        btrep2.setEnabled(false);
-        btrep3.setEnabled(false);
-        btrep4.setEnabled(false);
     }
 
     /**
@@ -174,56 +156,129 @@ public class FenetreQuiz extends javax.swing.JFrame {
         getContentPane().add(btrep4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 243, 180, 60));
 
         nxtquest.setText("prochainequestion");
-        getContentPane().add(nxtquest, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, -1, -1));
+        nxtquest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nxtquestActionPerformed(evt);
+            }
+        });
+        getContentPane().add(nxtquest, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 160, 60));
 
         resultquest.setText("Resultatquestion");
-        getContentPane().add(resultquest, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 150, 130));
+        getContentPane().add(resultquest, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 220, 130));
 
         score.setBackground(new java.awt.Color(204, 255, 204));
         score.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 24)); // NOI18N
         score.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         score.setText("score");
         score.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(255, 0, 51)));
-        getContentPane().add(score, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 52, 52));
+        score.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        getContentPane().add(score, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 100, 52));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btrep1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btrep1ActionPerformed
         // TODO add your handling code here:
-        verifierReponse(1);
+        int numeroChoisi = 1; 
+        Question q = listeQuestions.get(indexQuestionCourante);
+
+        if (numeroChoisi == q.getIndexBonneReponse()) {
+            resultquest.setText("<html>" + "Bonne réponse !" + "</html>");
+            scorequest++;
+            score.setText("<html>" + "Score : " + scorequest + "</html>");
+        } else {
+            resultquest.setText("<html>" + "Mauvaise réponse ! " + "</html>");
+        }
+
+        // désactiver les boutons
+        btrep1.setEnabled(false);
+        btrep2.setEnabled(false);
+        btrep3.setEnabled(false);
+        btrep4.setEnabled(false);
+
     }//GEN-LAST:event_btrep1ActionPerformed
 
     private void btrep2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btrep2ActionPerformed
         // TODO add your handling code here:
-        verifierReponse(2);
+        int numeroChoisi = 2; 
+        Question q = listeQuestions.get(indexQuestionCourante);
+
+        if (numeroChoisi == q.getIndexBonneReponse()) {
+            resultquest.setText("<html>" + "Bonne réponse !" + "</html>");
+            scorequest++;
+            score.setText("<html>" + "Score : " + scorequest + "</html>");
+        } else {
+            resultquest.setText("<html>" + "Mauvaise réponse !" + "</html>");
+        }
+
+        btrep1.setEnabled(false);
+        btrep2.setEnabled(false);
+        btrep3.setEnabled(false);
+        btrep4.setEnabled(false);
+
     }//GEN-LAST:event_btrep2ActionPerformed
 
     private void btrep4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btrep4ActionPerformed
         // TODO add your handling code here:
-        verifierReponse(4);
+        int numeroChoisi = 4;
+        Question q = listeQuestions.get(indexQuestionCourante);
+
+        if (numeroChoisi == q.getIndexBonneReponse()) {
+            resultquest.setText("<html>" + "Bonne réponse !" + "</html>");
+            scorequest++;
+            score.setText("<html>" + "Score : " + scorequest + "</html>");
+        } else {
+            resultquest.setText("<html>" + "Mauvaise réponse !" + "</html>");
+        }
+
+        btrep1.setEnabled(false);
+        btrep2.setEnabled(false);
+        btrep3.setEnabled(false);
+        btrep4.setEnabled(false);
     }//GEN-LAST:event_btrep4ActionPerformed
 
     private void btrep3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btrep3ActionPerformed
         // TODO add your handling code here:
-        verifierReponse(3);
-    }//GEN-LAST:event_btrep3ActionPerformed
-private void btnSuivantActionPerformed(java.awt.event.ActionEvent evt) {
+        int numeroChoisi = 3;
+        Question q = listeQuestions.get(indexQuestionCourante);
 
+        if (numeroChoisi == q.getIndexBonneReponse()) {
+            resultquest.setText("<html>" + "Bonne réponse !" + "</html>");
+            scorequest++;
+            score.setText("<html>" + "Score : " + scorequest + "</html>");
+        } else {
+            resultquest.setText("<html>" + "Mauvaise réponse !" + "</html>");
+        }
+
+        btrep1.setEnabled(false);
+        btrep2.setEnabled(false);
+        btrep3.setEnabled(false);
+        btrep4.setEnabled(false);
+
+    }//GEN-LAST:event_btrep3ActionPerformed
+
+    private void nxtquestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nxtquestActionPerformed
+        // TODO add your handling code here:
         indexQuestionCourante++;
+        if (scorequest==5);
+        
 
         if (indexQuestionCourante < listeQuestions.size()) {
+
             afficherQuestionCourante();
-            resultquest.setText("");
+
         } else {
-            quest.setText("Quiz terminé !");
+
+            resultquest.setText("Quiz terminé. Score : " + scorequest + " / " + listeQuestions.size());
+
+            nxtquest.setEnabled(false);
+
             btrep1.setEnabled(false);
             btrep2.setEnabled(false);
             btrep3.setEnabled(false);
             btrep4.setEnabled(false);
-            nxtquest.setEnabled(false);
         }
-    }
+    }//GEN-LAST:event_nxtquestActionPerformed
 
     /**
      * @param args the command line arguments
