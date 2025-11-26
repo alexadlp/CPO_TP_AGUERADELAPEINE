@@ -12,16 +12,19 @@ import Armes.Arme;
  * @author alexa
  */
 public class Baton extends Arme {
-
-
-    int Age;
-
-    public Baton(String nom, int niveauAttaque, int Age) {
-        super(nom, niveauAttaque);
-        if (Age >= 0 && Age <= 100)/*le "&&" trouvé grâce à chatgpt*/ {
-            this.Age = Age;
-        } else {
-            this.Age = 100;
+    int age;
+   
+    public Baton(int niveau_attaque, String nom, int age) {
+        super(niveau_attaque, nom);
+        if(age<0 || age>100){
+            System.out.println("Erreur, la valeur de l'age doit etre inferieur a 100");
         }
+        this.age=age;
     }
+
+    public int getAge() {
+        return age;
+    }
+   
+   
 }

@@ -1,0 +1,155 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package tp3_heroic_fantasy_agueradelapeine;
+
+import Armes.Arme;
+import Armes.Baton;
+import Armes.Epee;
+import java.util.ArrayList;
+
+/**
+ *
+ * @author alexa Tout personnage possèdent un nom et un niveau de vie. 17. On
+ * doit pouvoir initialiser ses 2 paramètres à la création du personnage. 18.
+ * On doit pouvoir connaître le niveau de vie. 19. On doit pouvoir visualiser
+ * (dans la console, par exemple) le nom et le niveau (redéfinir la méthode
+ * toString). 20. On doit pouvoir avoir accès au nom du personnage 21. Cette
+ * classe est abstraite
+ */
+public abstract class Personnage implements EtreVivant {
+
+    protected String nom;
+    protected int niveauVie;
+    protected ArrayList<Arme> inventaire = new ArrayList<>();
+    protected Arme armeEnMain = null;
+    protected abstract boolean isArmedePredilection(Arme a);
+    protected static int nbPersonnage = 0;
+    protected static int nbGuerrier = 0;
+    protected static int nbMagicien = 0;
+    protected abstract int calculerDegats();
+
+    public static int getNbPersonnage() {
+        return nbPersonnage;
+    }
+
+    public static int getNbGuerrier() {
+        return nbGuerrier;
+    }
+
+    public static int getNbMagicien() {
+        return nbMagicien;
+    }
+
+    public Personnage(String nom, int niveauVie) {
+        this.nom = nom;
+        this.niveauVie = niveauVie;
+        nbPersonnage++;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public int getNiveauVie() {
+        return niveauVie;
+    }
+
+    public void ajouterArme(Arme a) {
+        if (inventaire.size() < 5) {
+            inventaire.add(a);
+            System.out.println(nom + " ajouter l'arme " + a.getNom());
+        } else {
+            System.out.println(nom + " ne peut pas porter plus de 5 armes !");
+        }
+    }
+   
+    public Arme getArmeEnMain(){
+       return armeEnMain;
+    }
+   
+    public boolean equiper(String nomArme){
+        for(Arme a : inventaire){
+            if(a.getNom().equalsIgnoreCase(nomArme)){
+                armeEnMain = a;
+                System.out.println(nom + " équipe " + nomArme);
+                return true;
+            }
+        }
+        System.out.println(nom + " n'a pas l'arme " + nomArme + " dans son inventaire ");
+        return false;
+    }
+   
+    public int compterArmesDePredilection(){
+        int c = 0;
+        for(Arme a : inventaire){
+            if(isArmedePredilection(a)){
+                c++;
+            }
+        }
+        return c;
+    }
+   
+    public void attaquer(Personnage cible){
+        if(!this.estVivant()){
+            System.out.println(nom + " deja KO");
+            return;
+        }
+        if (!cible.estVivant()){
+            System.out.println(cible.nom + " deja KO ");
+        }
+        int degats = calculerDegats();
+        if(armeEnMain != null){
+            degats *= armeEnMain.getNiveauAttaque();
+        }
+        if(this instanceof Magicien && armeEnMain instanceof Baton){
+            degats *= ((Baton)armeEnMain).getAge();
+            this.seFatiguer();
+        }
+        if(this instanceof Guerrier && armeEnMain instanceof Epee){
+            degats *= ((Epee)armeEnMain).getFinesse();
+            this.seFatiguer();
+        }
+        if(this instanceof Magicien && ((Magicien)this).isConfirme()){
+            degats /= 2;
+        }
+        if(this instanceof Guerrier && ((Guerrier)this).isCheval()){
+            degats /= 2;
+        }
+        cible.estAttaquer(degats);
+        System.out.println(nom + " attaque " + cible.nom + " et inflige " + degats + " degats");
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "{"
+                + "nom='" + nom + '\''
+                + ", niveauVie=" + niveauVie
+                + ", nbArmes=" + inventaire.size()
+                + '}';
+    }
+   
+    @Override
+    public void finalize()throws Throwable{
+        try{
+            nbPersonnage--;
+        } finally{
+            super.finalize();
+        }
+    }
+   
+    @Override
+    public void seFatiguer(){
+        this.niveauVie-=10;
+    }
+    @Override
+    public boolean estVivant(){
+        return this.niveauVie>0;
+    }
+    @Override
+    public void estAttaquer(int points){
+        this.niveauVie-=Math.max(0,points);
+    }
+ 
+}

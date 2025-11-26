@@ -8,7 +8,6 @@ import Armes.Baton;
 import Armes.Arme;
 import Armes.Epee;
 import java.util.ArrayList;
-import java.util.Vector;
 
 /**
  *
@@ -16,23 +15,48 @@ import java.util.Vector;
  */
 public class TP3_Heroic_Fantasy_AGUERADELAPEINE {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        ArrayList<Arme> mesArmes = new ArrayList<Arme>();
+        // TODO code application logic here
+        Guerrier g = new Guerrier("Archeon", 50000, true);
+        Magicien m = new Magicien("Maxence", 120, false);
 
-        Epee Epee1 = new Epee("Excalibur", 7, 5);
-        Epee Epee2 = new Epee("Durandal", 4, 7);
-        Baton baton1 = new Baton("Chêne", 4, 5);
-        Baton baton2 = new Baton("Charme", 5, 6);
-        mesArmes.add(Epee1);
-        mesArmes.add(Epee2);
-        mesArmes.add(baton1);
-        mesArmes.add(baton2);
-        System.out.println("Liste des armes :");
-        for (int i = 0; i < mesArmes.size(); i++) {
-            System.out.println(mesArmes.get(i));
-        }
+        Baton b1 = new Baton(4, "Chene", 5);
+        Baton b2 = new Baton(5, "Charme", 6);
+
+        Epee e1 = new Epee(7, "Excalibur", 5);
+        Epee e2 = new Epee(4, "Durandal", 7);
+
+        g.ajouterArme(e1);
+        g.ajouterArme(b1);
+
+        g.equiper("Excalibur");
+
+        m.ajouterArme(e2);
+        m.ajouterArme(b2);
+
+        m.equiper("Charme");
+
+        System.out.println("Arme de predilection du magicien " + m.compterArmesDePredilection());
+        System.out.println("Arme de predilection du guerrier " + g.compterArmesDePredilection());
+
+        System.out.println("Personnages :");
+        System.out.println(g);
+        System.out.println(m);
+
+        System.out.println("\n--- DEBUT DU COMBAT ---");
+
+        
+        m.attaquer(g);
+        System.out.println(m);
+        System.out.println(g);
+
+        g.attaquer(m);
+        System.out.println(m);
+        System.out.println(g);
+
+        
+        System.out.println("Mage vivant ? " + m.estVivant());
+        System.out.println("Warrior vivant ? " + g.estVivant());
+
     }
 }

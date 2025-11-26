@@ -19,18 +19,16 @@ sens de créer des obets qui soient « seulement » de type Arme ; Ils sont forc
 ou Baton 
  */
 public abstract class Arme {
-    // Attributs
-    private String nom;
-    private int niveauAttaque;
 
-    // Constructeur
-    public Arme(String nom, int niveauAttaque) {
-        this.nom = nom;
-        if (niveauAttaque >= 0 && niveauAttaque <= 100 )/*le "&&" trouvé grâce à chatgpt*/ {
-            this.niveauAttaque = niveauAttaque;
-        } else {
-            this.niveauAttaque = 100;
+    String nom;
+    int niveau_attaque;
+
+    public Arme(int niveau_attaque, String nom) {
+        if (niveau_attaque < 0 || niveau_attaque > 100) {
+            System.out.println("Erreur, la valeur de l'attaque doit etre comprise entre 0 et 100");
         }
+        this.niveau_attaque = niveau_attaque;
+        this.nom = nom;
     }
 
     public String getNom() {
@@ -38,10 +36,12 @@ public abstract class Arme {
     }
 
     public int getNiveauAttaque() {
-        return niveauAttaque;
+        return niveau_attaque;
     }
+
     @Override
     public String toString() {
-        return "Arme : " + nom + " | Niveau d'attaque : " + niveauAttaque;
+        return "Arme{" + "nom=" + nom + ", niveau d'attaque=" + niveau_attaque + '}';
     }
+
 }

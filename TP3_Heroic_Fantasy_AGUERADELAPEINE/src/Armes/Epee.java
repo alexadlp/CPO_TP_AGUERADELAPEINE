@@ -11,15 +11,19 @@ import Armes.Arme;
  * @author alexa
  */
 public class Epee extends Arme {
-
     int finesse;
-
-    public Epee(String nom, int niveauAttaque, int finesse) {
-        super(nom, niveauAttaque);
-        if (finesse >= 0 && finesse <= 100)/*le "&&" trouvé grâce à chatgpt*/ {
-            this.finesse = finesse;
-        } else {
-            this.finesse = 100;
+   
+    public Epee(int niveau_attaque, String nom, int finesse) {
+        super(niveau_attaque, nom);
+        if(finesse<0 || finesse>100){
+            System.out.println("Erreur, la valeur de la finesse doit etre inferieur a 100");
         }
+        this.finesse= finesse;
     }
+
+    public int getFinesse() {
+        return finesse;
+    }
+   
+   
 }
