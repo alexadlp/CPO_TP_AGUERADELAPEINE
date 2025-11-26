@@ -263,6 +263,7 @@ public class FenetreQuiz extends javax.swing.JFrame {
         if (scorequest==5){
         Vic v=new Vic();
         v.setVisible(true);
+        this.dispose();
         }
         if (indexQuestionCourante < listeQuestions.size()) {
 
