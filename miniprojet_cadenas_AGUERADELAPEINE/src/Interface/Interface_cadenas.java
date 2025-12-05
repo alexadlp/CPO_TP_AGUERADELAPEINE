@@ -3,6 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interface;
+import javax.swing.*;
+import java.awt.*;
+import java.util.Random;
+import java.util.Arrays;
 
 /**
  *
@@ -18,6 +22,56 @@ public class Interface_cadenas extends javax.swing.JFrame {
     public Interface_cadenas() {
         initComponents();
     }
+    public class CadenasMetier {
+
+    private int[] codeSecret;
+    private int nbTentatives;
+    private final int maxTentatives = 5;
+
+    public CadenasMetier() {
+        genererCodeSecret();
+    }
+
+    private void genererCodeSecret() {
+        codeSecret = new int[4];
+        for (int i = 0; i < 4; i++) {
+            codeSecret[i] = (int)(Math.random() * 10);
+        }
+    }
+
+    public int[] getCodeSecret() {
+        return codeSecret;
+    }
+
+    public int getNbTentatives() {
+        return nbTentatives;
+    }
+
+    public int getMaxTentatives() {
+        return maxTentatives;
+    }
+    public int[] testerTentative(int[] tentative) {
+        int exact = 0, tropHaut = 0, tropBas = 0;
+
+        for (int i = 0; i < 4; i++) {
+            if (tentative[i] == codeSecret[i]) exact++;
+            else if (tentative[i] > codeSecret[i]) tropHaut++;
+            else tropBas++;
+        }
+
+        nbTentatives++;
+
+        return new int[]{exact, tropHaut, tropBas};
+    }
+
+    public boolean isPartieGagnee(int[] resultat) {
+        return resultat[0] == 4;
+    }
+
+    public boolean isPartiePerdue() {
+        return nbTentatives >= maxTentatives;
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,6 +105,7 @@ public class Interface_cadenas extends javax.swing.JFrame {
         texte_score = new javax.swing.JLabel();
         texte_tentative = new javax.swing.JLabel();
         bouton_recommencer = new javax.swing.JButton();
+        texte_victoire_defaite = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -147,7 +202,12 @@ public class Interface_cadenas extends javax.swing.JFrame {
                         getContentPane().add(down_chiffre_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 40, -1));
 
                         bouton_tester.setText("jButton1");
-                        bouton_tester.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+                        bouton_tester.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                        bouton_tester.addActionListener(new java.awt.event.ActionListener() {
+                            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                bouton_testerActionPerformed(evt);
+                            }
+                        });
                         getContentPane().add(bouton_tester, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, -1, -1));
 
                         texte_lbl_nb_chiffre_exacte.setText("jLabel1");
@@ -184,6 +244,9 @@ public class Interface_cadenas extends javax.swing.JFrame {
                             }
                         });
                         getContentPane().add(bouton_recommencer, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 140, -1));
+
+                        texte_victoire_defaite.setText("jLabel1");
+                        getContentPane().add(texte_victoire_defaite, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 170, -1));
 
                         pack();
                     }// </editor-fold>//GEN-END:initComponents
@@ -223,6 +286,10 @@ public class Interface_cadenas extends javax.swing.JFrame {
     private void bouton_recommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_recommencerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bouton_recommencerActionPerformed
+
+    private void bouton_testerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_testerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bouton_testerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,6 +336,7 @@ public class Interface_cadenas extends javax.swing.JFrame {
     private javax.swing.JLabel texte_nb_chiffre_haut;
     private javax.swing.JLabel texte_score;
     private javax.swing.JLabel texte_tentative;
+    private javax.swing.JLabel texte_victoire_defaite;
     private javax.swing.JButton up_chiffre_1;
     private javax.swing.JButton up_chiffre_2;
     private javax.swing.JButton up_chiffre_3;
