@@ -13,6 +13,8 @@ import java.util.Arrays;
  * @author alexa
  */
 public class Interface_cadenas extends javax.swing.JFrame {
+    private CadenasMetier jeu;
+    private int[] combinaison;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Interface_cadenas.class.getName());
 
@@ -20,8 +22,25 @@ public class Interface_cadenas extends javax.swing.JFrame {
      * Creates new form Interface_cadenas
      */
     public Interface_cadenas() {
-        initComponents();
-    }
+    initComponents();
+    initialiserJeu();
+}
+    private void initialiserJeu() {
+    jeu = new CadenasMetier();
+    combinaison = new int[]{0, 0, 0, 0};
+
+    texte_chiffre_0.setText("0");
+    texte_chiffre_1.setText("0");
+    texte_chiffre_2.setText("0");
+    texte_chiffre_3.setText("0");
+
+    texte_nb_chiffre_exacte.setText("0");
+    texte_nb_chiffre_haut.setText("0");
+    texte_nb_chiffre_bas.setText("0");
+
+    texte_score.setText("0 / " + jeu.getMaxTentatives());
+    texte_victoire_defaite.setText("");
+}
     public class CadenasMetier {
 
     private int[] codeSecret;
