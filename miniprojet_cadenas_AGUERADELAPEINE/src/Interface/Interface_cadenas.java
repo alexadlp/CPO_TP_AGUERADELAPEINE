@@ -31,7 +31,9 @@ public class Interface_cadenas extends javax.swing.JFrame {
     private void initialiserJeu() {
         jeu = new CadenasMetier();
         combinaison = new int[]{0, 0, 0, 0};
-
+texte_lbl_nb_chiffre_exacte.setText("<html>" + "Nombre de chiffres exactes:" + "</html>");
+texte_lbl_nb_chiffre_bas.setText("<html>" + "Nombre de chiffres trop bas:" + "</html>");
+texte_lbl_nb_chiffre_haut.setText("<html>" + "Nombre de chiffres trop haut:" + "</html>");
         texte_chiffre_0.setText("0");
         texte_chiffre_1.setText("0");
         texte_chiffre_2.setText("0");
@@ -144,8 +146,8 @@ public class Interface_cadenas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        texte_intro.setText("jLabel1");
-        getContentPane().add(texte_intro, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 18, 37, -1));
+        texte_intro.setText("Bienvenu sur cadenasGame");
+        getContentPane().add(texte_intro, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 18, 150, -1));
 
         up_chiffre_1.setText("/\\");
             up_chiffre_1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -235,7 +237,7 @@ public class Interface_cadenas extends javax.swing.JFrame {
                         });
                         getContentPane().add(down_chiffre_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 40, -1));
 
-                        bouton_tester.setText("jButton1");
+                        bouton_tester.setText("Tester");
                         bouton_tester.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
                         bouton_tester.addActionListener(new java.awt.event.ActionListener() {
                             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,23 +246,23 @@ public class Interface_cadenas extends javax.swing.JFrame {
                         });
                         getContentPane().add(bouton_tester, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, -1, -1));
 
-                        texte_lbl_nb_chiffre_exacte.setText("jLabel1");
-                        getContentPane().add(texte_lbl_nb_chiffre_exacte, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 70, -1));
+                        texte_lbl_nb_chiffre_exacte.setText("Nombre de chiffres exactes");
+                        getContentPane().add(texte_lbl_nb_chiffre_exacte, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 170, -1));
 
                         texte_nb_chiffre_exacte.setText("jLabel2");
-                        getContentPane().add(texte_nb_chiffre_exacte, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 30, -1));
+                        getContentPane().add(texte_nb_chiffre_exacte, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 30, -1));
 
-                        texte_lbl_nb_chiffre_haut.setText("jLabel1");
-                        getContentPane().add(texte_lbl_nb_chiffre_haut, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 70, -1));
+                        texte_lbl_nb_chiffre_haut.setText("nombre de chiffre trop haut");
+                        getContentPane().add(texte_lbl_nb_chiffre_haut, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 170, -1));
 
                         texte_nb_chiffre_haut.setText("jLabel2");
-                        getContentPane().add(texte_nb_chiffre_haut, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 30, -1));
+                        getContentPane().add(texte_nb_chiffre_haut, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 30, -1));
 
-                        texte_lbl_nb_chiffre_bas.setText("jLabel1");
-                        getContentPane().add(texte_lbl_nb_chiffre_bas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 70, -1));
+                        texte_lbl_nb_chiffre_bas.setText("Nombre de chiffres trop bas ");
+                        getContentPane().add(texte_lbl_nb_chiffre_bas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 170, -1));
 
                         texte_nb_chiffre_bas.setText("jLabel2");
-                        getContentPane().add(texte_nb_chiffre_bas, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 30, -1));
+                        getContentPane().add(texte_nb_chiffre_bas, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 30, -1));
 
                         texte_score.setText("jLabel1");
                         texte_score.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255), 4));
@@ -270,7 +272,7 @@ public class Interface_cadenas extends javax.swing.JFrame {
                         texte_tentative.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
                         getContentPane().add(texte_tentative, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, -1, -1));
 
-                        bouton_recommencer.setText("jButton1");
+                        bouton_recommencer.setText("Recommencer");
                         bouton_recommencer.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
                         bouton_recommencer.addActionListener(new java.awt.event.ActionListener() {
                             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -311,36 +313,36 @@ public class Interface_cadenas extends javax.swing.JFrame {
 
     private void down_chiffre_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre_2ActionPerformed
         // TODO add your handling code here:
-        combinaison[1] = (combinaison[1] + 9) % 10;
+        combinaison[0] = (combinaison[0] + 9) % 10;
         mettreaJourAffichage();
     }//GEN-LAST:event_down_chiffre_2ActionPerformed
 
     private void down_chiffre_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre_3ActionPerformed
         // TODO add your handling code here:
-        combinaison[2] = (combinaison[2] + 9) % 10;
+        combinaison[1] = (combinaison[1] + 9) % 10;
         mettreaJourAffichage();
     }//GEN-LAST:event_down_chiffre_3ActionPerformed
 
     private void down_chiffre_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre_4ActionPerformed
         // TODO add your handling code here:
-        combinaison[3] = (combinaison[3] + 9) % 10;
+        combinaison[2] = (combinaison[2] + 9) % 10;
         mettreaJourAffichage();
     }//GEN-LAST:event_down_chiffre_4ActionPerformed
 
     private void down_chiffre_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre_1ActionPerformed
         // TODO add your handling code here:
-        combinaison[0] = (combinaison[0] + 9) % 10;
+        combinaison[3] = (combinaison[3] + 9) % 10;
         mettreaJourAffichage();
     }//GEN-LAST:event_down_chiffre_1ActionPerformed
 
     private void bouton_recommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_recommencerActionPerformed
         // TODO add your handling code here:
+        initialiserJeu();
     }//GEN-LAST:event_bouton_recommencerActionPerformed
 
     private void bouton_testerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_testerActionPerformed
         // TODO add your handling code here:
         int[] resultat = jeu.testerTentative(combinaison);
-
         texte_nb_chiffre_exacte.setText(String.valueOf(resultat[0]));
         texte_nb_chiffre_haut.setText(String.valueOf(resultat[1]));
         texte_nb_chiffre_bas.setText(String.valueOf(resultat[2]));
