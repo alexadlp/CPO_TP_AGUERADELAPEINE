@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interface;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
@@ -13,84 +14,98 @@ import java.util.Arrays;
  * @author alexa
  */
 public class Interface_cadenas extends javax.swing.JFrame {
+
     private CadenasMetier jeu;
     private int[] combinaison;
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Interface_cadenas.class.getName());
 
     /**
      * Creates new form Interface_cadenas
      */
     public Interface_cadenas() {
-    initComponents();
-    initialiserJeu();
-}
+        initComponents();
+        initialiserJeu();
+    }
+
     private void initialiserJeu() {
-    jeu = new CadenasMetier();
-    combinaison = new int[]{0, 0, 0, 0};
+        jeu = new CadenasMetier();
+        combinaison = new int[]{0, 0, 0, 0};
 
-    texte_chiffre_0.setText("0");
-    texte_chiffre_1.setText("0");
-    texte_chiffre_2.setText("0");
-    texte_chiffre_3.setText("0");
+        texte_chiffre_0.setText("0");
+        texte_chiffre_1.setText("0");
+        texte_chiffre_2.setText("0");
+        texte_chiffre_3.setText("0");
 
-    texte_nb_chiffre_exacte.setText("0");
-    texte_nb_chiffre_haut.setText("0");
-    texte_nb_chiffre_bas.setText("0");
+        texte_nb_chiffre_exacte.setText("0");
+        texte_nb_chiffre_haut.setText("0");
+        texte_nb_chiffre_bas.setText("0");
+        texte_score.setText("0 / " + jeu.getMaxTentatives());
+        texte_victoire_defaite.setText("");
+    }
 
-    texte_score.setText("0 / " + jeu.getMaxTentatives());
-    texte_victoire_defaite.setText("");
-}
+    private void mettreaJourAffichage() {
+        texte_chiffre_0.setText(String.valueOf(combinaison[0]));
+        texte_chiffre_1.setText(String.valueOf(combinaison[1]));
+        texte_chiffre_2.setText(String.valueOf(combinaison[2]));
+        texte_chiffre_3.setText(String.valueOf(combinaison[3]));
+    }
+
     public class CadenasMetier {
 
-    private int[] codeSecret;
-    private int nbTentatives;
-    private final int maxTentatives = 5;
+        private int[] codeSecret;
+        private int nbTentatives;
+        private final int maxTentatives = 5;
 
-    public CadenasMetier() {
-        genererCodeSecret();
-    }
-
-    private void genererCodeSecret() {
-        codeSecret = new int[4];
-        for (int i = 0; i < 4; i++) {
-            codeSecret[i] = (int)(Math.random() * 10);
-        }
-    }
-
-    public int[] getCodeSecret() {
-        return codeSecret;
-    }
-
-    public int getNbTentatives() {
-        return nbTentatives;
-    }
-
-    public int getMaxTentatives() {
-        return maxTentatives;
-    }
-    public int[] testerTentative(int[] tentative) {
-        int exact = 0, tropHaut = 0, tropBas = 0;
-
-        for (int i = 0; i < 4; i++) {
-            if (tentative[i] == codeSecret[i]) exact++;
-            else if (tentative[i] > codeSecret[i]) tropHaut++;
-            else tropBas++;
+        public CadenasMetier() {
+            genererCodeSecret();
         }
 
-        nbTentatives++;
+        private void genererCodeSecret() {
+            codeSecret = new int[4];
+            for (int i = 0; i < 4; i++) {
+                codeSecret[i] = (int) (Math.random() * 10);
+            }
+        }
 
-        return new int[]{exact, tropHaut, tropBas};
-    }
+        public int[] getCodeSecret() {
+            return codeSecret;
+        }
 
-    public boolean isPartieGagnee(int[] resultat) {
-        return resultat[0] == 4;
-    }
+        public int getNbTentatives() {
+            return nbTentatives;
+        }
 
-    public boolean isPartiePerdue() {
-        return nbTentatives >= maxTentatives;
+        public int getMaxTentatives() {
+            return maxTentatives;
+        }
+
+        public int[] testerTentative(int[] tentative) {
+            int exact = 0, tropHaut = 0, tropBas = 0;
+
+            for (int i = 0; i < 4; i++) {
+                if (tentative[i] == codeSecret[i]) {
+                    exact++;
+                } else if (tentative[i] > codeSecret[i]) {
+                    tropHaut++;
+                } else {
+                    tropBas++;
+                }
+            }
+
+            nbTentatives++;
+
+            return new int[]{exact, tropHaut, tropBas};
+        }
+
+        public boolean isPartieGagnee(int[] resultat) {
+            return resultat[0] == 4;
+        }
+
+        public boolean isPartiePerdue() {
+            return nbTentatives >= maxTentatives;
+        }
     }
-}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -272,34 +287,50 @@ public class Interface_cadenas extends javax.swing.JFrame {
 
     private void up_chiffre_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre_1ActionPerformed
         // TODO add your handling code here:
+        combinaison[0] = (combinaison[0] + 1) % 10;
+        mettreaJourAffichage();
     }//GEN-LAST:event_up_chiffre_1ActionPerformed
 
     private void up_chiffre_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre_2ActionPerformed
         // TODO add your handling code here:
+        combinaison[1] = (combinaison[1] + 1) % 10;
+        mettreaJourAffichage();
     }//GEN-LAST:event_up_chiffre_2ActionPerformed
 
     private void up_chiffre_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre_3ActionPerformed
         // TODO add your handling code here:
+        combinaison[2] = (combinaison[2] + 1) % 10;
+        mettreaJourAffichage();
     }//GEN-LAST:event_up_chiffre_3ActionPerformed
 
     private void up_chiffre_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre_4ActionPerformed
         // TODO add your handling code here:
+        combinaison[3] = (combinaison[3] + 1) % 10;
+        mettreaJourAffichage();
     }//GEN-LAST:event_up_chiffre_4ActionPerformed
 
     private void down_chiffre_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre_2ActionPerformed
         // TODO add your handling code here:
+        combinaison[1] = (combinaison[1] + 9) % 10;
+        mettreaJourAffichage();
     }//GEN-LAST:event_down_chiffre_2ActionPerformed
 
     private void down_chiffre_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre_3ActionPerformed
         // TODO add your handling code here:
+        combinaison[2] = (combinaison[2] + 9) % 10;
+        mettreaJourAffichage();
     }//GEN-LAST:event_down_chiffre_3ActionPerformed
 
     private void down_chiffre_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre_4ActionPerformed
         // TODO add your handling code here:
+        combinaison[3] = (combinaison[3] + 9) % 10;
+        mettreaJourAffichage();
     }//GEN-LAST:event_down_chiffre_4ActionPerformed
 
     private void down_chiffre_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre_1ActionPerformed
         // TODO add your handling code here:
+        combinaison[0] = (combinaison[0] + 9) % 10;
+        mettreaJourAffichage();
     }//GEN-LAST:event_down_chiffre_1ActionPerformed
 
     private void bouton_recommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_recommencerActionPerformed
@@ -308,6 +339,19 @@ public class Interface_cadenas extends javax.swing.JFrame {
 
     private void bouton_testerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_testerActionPerformed
         // TODO add your handling code here:
+        int[] resultat = jeu.testerTentative(combinaison);
+
+        texte_nb_chiffre_exacte.setText(String.valueOf(resultat[0]));
+        texte_nb_chiffre_haut.setText(String.valueOf(resultat[1]));
+        texte_nb_chiffre_bas.setText(String.valueOf(resultat[2]));
+
+        texte_score.setText(jeu.getNbTentatives() + " / " + jeu.getMaxTentatives());
+
+        if (jeu.isPartieGagnee(resultat)) {
+            texte_victoire_defaite.setText("<html>" + "Victoire !" + "</html>");
+        } else if (jeu.isPartiePerdue()) {
+            texte_victoire_defaite.setText("<html>" + "Défaite !" + "</html>");
+        }
     }//GEN-LAST:event_bouton_testerActionPerformed
 
     /**
